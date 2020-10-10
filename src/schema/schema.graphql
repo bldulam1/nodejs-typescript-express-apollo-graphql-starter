@@ -12,6 +12,14 @@ type User {
   register_date: Date!
 }
 
+type Photo {
+  id: Int
+  albumId: Int!
+  title: String!
+  url: String!
+  thumbnailUrl: String!
+}
+
 type Mutation {
   createUser(
     first_name: String!
@@ -23,9 +31,14 @@ type Mutation {
     is_admin: Boolean!
     register_date: Date!
   ): User!
+
+  createPhotosTable: String!
+
+  createPhoto(albumId: Int!, title: String!, url: String!, thumbnailUrl: String!): Photo!
 }
 
 type Query {
-  helloWorld: String!
   users: [User]!
+  photos: [Photo]!
+  photo(id: Int): Photo
 }

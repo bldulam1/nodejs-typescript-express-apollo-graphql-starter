@@ -1,20 +1,20 @@
-import { Context } from './models'
-import { GraphQLResolveInfo } from 'graphql'
+import { createPhoto, createPhotosTable } from './resolvers/photos/photos.mutation'
+import { getPhoto, getPhotos } from './resolvers/photos/photos.queries'
+
 import { IResolvers } from 'graphql-tools'
-import { User } from './datatypes/types'
 import createUser from './resolvers/users/createUser'
-import db from './app.database'
 import getUsers from './resolvers/users/getUsers'
 
 const resolverMap: IResolvers = {
   Query: {
-    helloWorld(_: void, args: void, ctx: Context, info: GraphQLResolveInfo): string {
-      return `👋 Hello world! 👋`
-    },
     users: getUsers,
+    photos: getPhotos,
+    photo: getPhoto,
   },
   Mutation: {
-    createUser: createUser,
+    createUser,
+    createPhoto,
+    createPhotosTable,
   },
 }
 

@@ -13,11 +13,12 @@ export type Scalars = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  newUser: User;
+  createUser: User;
+  createPhoto: Photo;
 };
 
 
-export type MutationNewUserArgs = {
+export type MutationCreateUserArgs = {
   first_name: Scalars['String'];
   last_name: Scalars['String'];
   email: Scalars['String'];
@@ -28,10 +29,27 @@ export type MutationNewUserArgs = {
   register_date: Scalars['Date'];
 };
 
+
+export type MutationCreatePhotoArgs = {
+  albumId: Scalars['Int'];
+  title: Scalars['String'];
+  url: Scalars['String'];
+  thumbnailUrl: Scalars['String'];
+};
+
+export type Photo = {
+  __typename?: 'Photo';
+  id?: Maybe<Scalars['Int']>;
+  albumId: Scalars['Int'];
+  title: Scalars['String'];
+  url: Scalars['String'];
+  thumbnailUrl: Scalars['String'];
+};
+
 export type Query = {
   __typename?: 'Query';
-  helloWorld: Scalars['String'];
-  ping: Scalars['String'];
+  users: Array<Maybe<User>>;
+  photos: Array<Maybe<Photo>>;
 };
 
 export type User = {

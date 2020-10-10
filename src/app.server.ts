@@ -24,8 +24,8 @@ export default function ExpressApolloServer(graphqlPath: string, port: number | 
     if (err) throw err
 
     console.log('MySQL connected')
-    createServer(app).listen({ port }, () => {
-      console.log(`\nGraphQL is now running on http://localhost:${port}${server.graphqlPath}`)
-    })
+    const url = `http://localhost:${port}${server.graphqlPath}`
+    const message = `\nGraphQL is now running on ${url}`
+    createServer(app).listen({ port }, () => console.log(message))
   })
 }
