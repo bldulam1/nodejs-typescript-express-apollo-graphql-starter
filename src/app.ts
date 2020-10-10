@@ -1,4 +1,4 @@
-import ExpressApolloServer from './server'
+import ExpressApolloServer from './app.server'
 
 const path = process.env.GRAPHQL_PATH || 'graphql'
 const port = process.env.PORT

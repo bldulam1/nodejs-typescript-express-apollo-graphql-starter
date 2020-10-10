@@ -2,6 +2,7 @@ import { ApolloServer } from 'apollo-server-express'
 import compression from 'compression'
 import cors from 'cors'
 import { createServer } from 'http'
+import db from './app.database'
 import depthLimit from 'graphql-depth-limit'
 import express from 'express'
 import schema from './schema'
@@ -18,9 +19,13 @@ export default function ExpressApolloServer(graphqlPath: string, port: number | 
   app.use(compression())
   server.applyMiddleware({ app, path: `/${graphqlPath}` })
 
-  const httpServer = createServer(app)
+  console.log('Connecting to the database')
+  db.connect((err) => {
+    if (err) throw err
 
-  httpServer.listen({ port }, (): void =>
-    console.log(`\nGraphQL is now running on http://localhost:${port}${server.graphqlPath}`)
-  )
+    console.log('MySQL connected')
+    createServer(app).listen({ port }, () => {
+      console.log(`\nGraphQL is now running on http://localhost:${port}${server.graphqlPath}`)
+    })
+  })
 }
