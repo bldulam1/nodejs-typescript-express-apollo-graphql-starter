@@ -7,7 +7,8 @@
     "start": "node 'dist/server.js'",
     "build": "tsc -p . && ncp src/schema dist/schema",
     "start:dev": "npm run build:dev",
-    "build:dev": "nodemon src/app.ts --exec ts-node src/app.ts -e ts,graphql"
+    "build:dev": "nodemon src/app.ts --exec ts-node src/app.ts -e ts,graphql",
+    "generate": "graphql-codegen"
   },
   "keywords": [
     "nodejs",
@@ -23,6 +24,8 @@
   },
   "homepage": "https://github.com/thmsgbrt/nodejs-typescript-express-apollo-graphql-starter#readme",
   "devDependencies": {
+    "@graphql-codegen/cli": "^1.17.10",
+    "@graphql-codegen/typescript": "^1.17.10",
     "@types/compression": "0.0.36",
     "@types/express": "4.16.1",
     "@types/graphql": "14.0.7",

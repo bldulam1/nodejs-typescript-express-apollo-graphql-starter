@@ -17,3 +17,6 @@ Thumbs.db
 # Config
 conf/env.json
 .env
+start.ps1
+
+/datatypes

@@ -1,6 +1,10 @@
 import ExpressApolloServer from './server'
 
-const path = 'gql'
-const port = 9000
+const path = process.env.GRAPHQL_PATH || 'graphql'
+const port = process.env.PORT
 
-ExpressApolloServer(path, port)
+if (port) {
+  ExpressApolloServer(path, port)
+} else {
+  console.error('PORT variable is undefined')
+}

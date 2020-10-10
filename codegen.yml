@@ -1,0 +1,10 @@
+# schema: http://localhost:9000/graphql
+# generates:
+#   ./src/types.d.ts:
+#     plugins:
+#       - typescript
+schema: http://localhost:${PORT}/${GRAPHQL_PATH}
+generates:
+  ./src/datatypes/types.ts:
+    plugins:
+      - typescript

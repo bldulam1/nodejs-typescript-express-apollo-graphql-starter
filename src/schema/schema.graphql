@@ -1,3 +1,17 @@
 type Query {
   helloWorld: String!
+  ping: String!
+}
+
+type Author {
+  id: Int!
+  firstName: String!
+  lastName: String!
+  posts(findTitle: String): [Post]
+}
+
+type Post {
+  id: Int!
+  title: String!
+  author: Author!
 }
