@@ -17,6 +17,13 @@ export const createPhoto = async (_: void, args: Photo, ctx: Context, info: Grap
   return args
 }
 
+export const deletePhoto = async (_: void, args: { id: number }, ctx: Context, info: GraphQLResolveInfo) => {
+  const sql = `DELETE FROM ${PHOTOS_TABLE} WHERE id=${args.id}`
+  const res = await db.promise().query(sql, args)
+
+  return res[0] as ResultSetHeader
+}
+
 export const createPhotosTable = async (_: void, args: Photo, ctx: Context, info: GraphQLResolveInfo) => {
   const sql = `
     CREATE TABLE ${PHOTOS_TABLE}(

@@ -20,6 +20,15 @@ type Photo {
   thumbnailUrl: String!
 }
 
+type ResultSetHeader {
+  fieldCount: Int
+  affectedRows: Int
+  insertId: Int
+  info: String
+  serverStatus: Int
+  warningStatus: Int
+}
+
 type Mutation {
   createUser(
     first_name: String!
@@ -33,8 +42,8 @@ type Mutation {
   ): User!
 
   createPhotosTable: String!
-
   createPhoto(albumId: Int!, title: String!, url: String!, thumbnailUrl: String!): Photo!
+  deletePhoto(id: Int!): ResultSetHeader
 }
 
 type Query {

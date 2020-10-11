@@ -1,4 +1,4 @@
-import { createPhoto, createPhotosTable } from './resolvers/photos/photos.mutation'
+import { createPhoto, createPhotosTable, deletePhoto } from './resolvers/photos/photos.mutation'
 import { getPhoto, getPhotos } from './resolvers/photos/photos.queries'
 
 import { IResolvers } from 'graphql-tools'
@@ -15,6 +15,7 @@ const resolverMap: IResolvers = {
     createUser,
     createPhoto,
     createPhotosTable,
+    deletePhoto,
   },
 }
 
